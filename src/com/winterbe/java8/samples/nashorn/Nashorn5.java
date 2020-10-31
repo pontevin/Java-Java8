@@ -23,7 +23,7 @@ public class Nashorn5 {
         product.setStock(1037);
 
         Object result = invocable.invokeFunction("getValueOfGoods", product);
-        System.out.println(result);
+        System.out.println("Value of Rubbers: " + result);
     }
 
 }

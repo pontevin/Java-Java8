@@ -76,7 +76,7 @@ list2.add("ddd1");
 list2
     .stream()
     .filter(function(el) {
-        return el.startsWith("aaa");
+        return el.endsWith("1");
     })
     .sorted()
     .forEach(function(el) {
@@ -91,17 +91,19 @@ print('Extend:');
 var Runnable = Java.type('java.lang.Runnable');
 var Printer = Java.extend(Runnable, {
     run: function() {
-        print('This was printed from a seperate thread.');
+        print('This was printed from a Printer thread.');
     }
 });
 
 var Thread = Java.type('java.lang.Thread');
-new Thread(new Printer()).start();
-
-new Thread(function() {
+var a = new Thread(new Printer());
+var b = new Thread(function() {
     print('this was printed from another thread');
-}).start();
-
+});
+a.start();
+b.start();
+a.join();
+b.join();
 
 print('------------------');
 print('Parameter Overload:');

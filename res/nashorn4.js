@@ -19,7 +19,7 @@ var runnable = new java.lang.Runnable() {
     }
 };
 
-runnable.run();
+new java.lang.Thread(runnable).start();
 
 
 // bind properties
